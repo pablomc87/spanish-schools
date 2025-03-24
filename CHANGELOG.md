@@ -2,6 +2,13 @@
 
 
 
+## v0.0.2 (2025-03-24)
+
+### Fix
+
+* fix(readme): correct repository path ([`101579c`](https://github.com/pablomc87/spanish-schools/commit/101579c62265c3a93af81b860eca21743742b60b))
+
+
 ## v0.0.1 (2025-03-24)
 
 ### Fix
