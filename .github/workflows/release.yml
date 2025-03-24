@@ -31,11 +31,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install semantic-release
+          pip install -e ".[dev]"
 
       - name: Semantic Release
         id: release
         run: |
-          semantic-release publish
+          python -m semantic_release publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
