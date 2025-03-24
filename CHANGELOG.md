@@ -2,6 +2,23 @@
 
 
 
+## v0.0.3 (2025-03-24)
+
+### Fix
+
+* fix(scraper): improve HTML parsing in ListScraper for robust school ID extraction
+
+- Refactor table detection to handle escaped HTML attributes
+
+- Update HTML parsing to use CSS selectors instead of direct attribute search
+
+- Replace payload with body in tests to prevent double-encoding issues
+
+- Add additional test cases for edge conditions (no tables, malformed HTML)
+
+- Improve logging for better debugging ([`0dcce0f`](https://github.com/pablomc87/spanish-schools/commit/0dcce0f472891f135f0be0a36feaf228e1f66aea))
+
+
 ## v0.0.2 (2025-03-24)
 
 ### Fix
