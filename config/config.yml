@@ -1,0 +1,40 @@
+# API Configuration
+api:
+  base_url: "https://www.educacion.gob.es/centros/buscarCentros"
+  details_url: "https://www.educacion.gob.es/centros/buscar.do"
+  default_payload:
+    idComunidad: "00"
+    idProvincia: "00"
+    nivel: "0"
+    naturaleza: "0"
+    familia: "0"
+    ensenanza: "0"
+    modalidad: "0"
+    tipoCentro: "0"
+    denominacion: "0"
+    localidad: "0"
+    codCentro: ""
+    nombreCentro: ""
+
+# Database Configuration
+database:
+  url: "sqlite:///schools.db"
+  echo: false
+
+# Data Storage
+storage:
+  raw_data_path: "data/raw/schools"
+  processed_data_path: "data/processed"
+
+# Scraping Configuration
+scraping:
+  max_concurrent_requests: 5
+  request_timeout: 30
+  retry_attempts: 3
+  retry_delay: 5
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/schools.log"
