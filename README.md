@@ -25,7 +25,7 @@ A Python-based scraper for collecting information about Spanish schools from the
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/schools.git
+git clone https://github.com/pablomc87/spanish-schools.git
 cd schools
 ```
 
