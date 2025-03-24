@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/bootstrap-datepicker.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/estilo.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/all.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/font-awesome.min.css" media="all" />
+
+    <title>Listado de centros</title>
+    
+    <!-- SCRIPTS -->
+	<script type="text/javascript" src="/centros/static/js/jquery-3.3.1.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap-datepicker.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap-datepicker.es.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/general.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar" style="background-color: #669bbc;">
+    <div class="container">
+	    
+	    <div class="col-md-1">
+	    	<a class="navbar-brand" href="#">
+		        <img class="d-inline-block" height="60px" src="/centros/static/imagenes/escudo-mefp.gif"/>
+		    </a>
+	    </div>
+	    
+	    <div class="col-md-11">	   		
+	    	<p class="text-center text-light align-items-center h3">Buscador de Centros Docentes No Universitarios</p>
+	    </div>
+        
+    </div>
+</nav>
+	</header>
+
+	<main>
+		<div class="container" style="min-height: 90vh">
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+	
+	<div class="col-md-11 text-right">
+		
+	<a href="javascript:exportarListadoCentrosPdf();" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Exportar"><i class="fas fa-file-pdf" style="color:red"></i> &nbsp;&nbsp;Exportar PDF</a>
+	<a href="javascript:exportarListadoCentrosExcel();" class="btn btn-outline-success btn-sm" data-toggle="tooltip" title="Exportar"><i class="fas fa-file-excel" style="color:green"></i> &nbsp;&nbsp;Exportar excel</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+	<a href="/centros/inicio" style="text-decoration: none; cursor:pointer;"><i class="fas fa-arrow-circle-up"></i> &nbsp;Inicio</a>
+	</div>
+    
+	
+	 
+</div>
+
+<br>
+
+
+
+<form id="formulario" name="formulario" method="post">
+	<input type="hidden" name="codCentro"/>
+	<input type="hidden" id="idComunidad" name="idComunidad" value="" />
+	<input type="hidden" id="idProvincia" name="idProvincia" value="" />
+	<input type="hidden" id="nivel" name="nivel" value="" />
+	<input type="hidden" id="naturaleza" name="naturaleza" value="" />
+	<input type="hidden" id="concertado" name="concertado" value="" />
+	<input type="hidden" id="familia" name="familia" value="" />
+	<input type="hidden" id="ensenanza" name="ensenanza" value="" />
+	<input type="hidden" id="modalidad" name="modalidad" value="" />
+	<input type="hidden" id="tipoCentro" name="tipoCentro" value="" />	
+</form>
+
+<form name="formularioCentrosPdf"  method="post">
+	<input type="hidden" id="nivel" name="nivel" value="" />
+	<input type="hidden" id="idComunidad" name="idComunidad" value="" />
+	<input type="hidden" id="idProvincia" name="idProvincia" value="" />
+	<input type="hidden" id="concertado" name="concertado" value="" />
+	<input type="hidden" id="naturaleza" name="naturaleza" value="" />
+	<input type="hidden" id="familia" name="familia" value="" />
+	<input type="hidden" id="ensenanza" name="ensenanza" value="" />
+	<input type="hidden" id="modalidad" name="modalidad" value="" />
+	<input type="hidden" id="tipoCentro" name="tipoCentro" value="" />
+	<input type="hidden" id="provincial" name="provincial" value="" />
+	<input type="hidden" id="comarca" name="comarca" value="" />
+	<input type="hidden" id="pais" name="pais" value="" />
+	<input type="hidden" id="localidad" name="localidad" value="" />
+	<input type="hidden" id="codCentro" name="codCentro" value="" />
+	<input type="hidden" id="nombreCentro" name="nombreCentro" value="" />
+	<input type="hidden" id="denominacion" name="denominacion" value="" />	
+	<input type="hidden" id="ensenanzaFP" name="ensenanzaFP" value="" />	
+</form>
+
+<form name="formularioCentrosExcel"  method="post">
+	<input type="hidden" id="nivel" name="nivel" value="" />
+	<input type="hidden" id="idComunidad" name="idComunidad" value="" />
+	<input type="hidden" id="idProvincia" name="idProvincia" value="" />
+	<input type="hidden" id="naturaleza" name="naturaleza" value="" />
+	<input type="hidden" id="concertado" name="concertado" value="" />
+	<input type="hidden" id="familia" name="familia" value="" />
+	<input type="hidden" id="ensenanza" name="ensenanza" value="" />
+	<input type="hidden" id="modalidad" name="modalidad" value="" />
+	<input type="hidden" id="tipoCentro" name="tipoCentro" value="" />
+	<input type="hidden" id="provincial" name="provincial" value="" />
+	<input type="hidden" id="comarca" name="comarca" value="" />
+	<input type="hidden" id="pais" name="pais" value="" />
+	<input type="hidden" id="localidad" name="localidad" value="" />
+	<input type="hidden" id="codCentro" name="codCentro" value="" />
+	<input type="hidden" id="nombreCentro" name="nombreCentro" value="" />	
+	<input type="hidden" id="denominacion" name="denominacion" value="" />
+	<input type="hidden" id="ensenanzaFP" name="ensenanzaFP" value="" />	
+</form>
+
+
+
+<!-- <div th:classappend="${centros!=null and !centros.isEmpty() ? 'block' : 'd-none'}"> -->
+<div>
+<div class="row">
+	<div class="col-md-12">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active"><i
+					class="fas fa-list-alt fa-lg mr-1"></i><i
+					class="fas fa-users fa-lg mr-2"></i>Listado de centros
+				</li>									 			
+			</ol>		
+		</nav>
+	</div>
+</div>
+
+<div class="form-row">	
+	<div class="form-group col-md-8">
+	Resultado de la búsqueda: <b><span>4</span> centros</b>
+	</div>	
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md-12">
+	
+
+		<table class="table table-hover table-sm">
+			<thead class="blue lighten-4">
+				<tr class="bg-light">
+					
+					<th scope="col">Provincia</th>
+					<th scope="col">Localidad</th>
+  			        <th scope="col">Denominación Genérica</th>
+					<th scope="col">Denominación Específica</th>
+					<th scope="col">Código</th>
+					<th scope="col">Naturaleza</th>
+					<th scope="col">&nbsp;</th>
+			</thead>
+			<tbody>
+				<tr> 
+						
+						<td >Provincia 1</td>
+						<td >Localidad 1</td>
+						<td >Centro de Educación de Adultos</td>
+						<td >Centro de Adultos 1</td>
+						<td >00000001</td>
+						<td >Centro público</td>
+						<td align="center">
+						<a href="#" onclick="javascript:detalleCentro(&quot;00000001&quot;);"><i class="fas fa-edit fa-lg align-middle" data-toggle="tooltip" title="Detalle centro"></i></a>
+						</td>
+				</tr>
+				<tr> 
+						
+						<td >Provincia 1</td>
+						<td >Localidad 1</td>
+						<td >Colegio de Educación Infantil y Primaria</td>
+						<td >Colegio 1</td>
+						<td >00000002</td>
+						<td >Centro público</td>
+						<td align="center">
+						<a href="#" onclick="javascript:detalleCentro(&quot;00000002&quot;);"><i class="fas fa-edit fa-lg align-middle" data-toggle="tooltip" title="Detalle centro"></i></a>
+						</td>
+				</tr>
+				<tr> 
+						
+						<td >Provincia 1</td>
+						<td >Localidad 1</td>
+						<td >Escuela Infantil</td>
+						<td >Escuela Infantil 1</td>
+						<td >00000003</td>
+						<td >Centro público</td>
+						<td align="center">
+						<a href="#" onclick="javascript:detalleCentro(&quot;00000003&quot;);"><i class="fas fa-edit fa-lg align-middle" data-toggle="tooltip" title="Detalle centro"></i></a>
+						</td>
+				</tr>
+				<tr> 
+						
+						<td >Provincia 1</td>
+						<td >Localidad 2</td>
+						<td >Colegio de Educación Infantil y Primaria</td>
+						<td >Colegio 2</td>
+						<td >00000004</td>
+						<td >Centro público</td>
+						<td align="center">
+						<a href="#" onclick="javascript:detalleCentro(&quot;00000004&quot;);"><i class="fas fa-edit fa-lg align-middle" data-toggle="tooltip" title="Detalle centro"></i></a>
+						</td>
+				</tr>		
+			</tbody>
+		</table>
+		
+		
+	</div>
+</div>
+</div>
+
+
+
+</div>
+<!-- Fin container -->
+<br>
+</main>
+
+<br>
+<br>
+<br>
+
+
+<footer class="page-footer fixed-bottom">
+    <div class="footer-copyright text-center font-small">
+        <div class="pb-3" style="background-color: #357ba6; color: #FFF;">
+            <hr>
+            <a href="mailto:contact@example.com" style="text-decoration : none; color: white;">Contacto</a> | Aviso legal | &copy Ministerio de Educaci&oacute;n, Formaci&oacute;n Profesional y Deportes - Gobierno de Espa&ntilde;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+    
+    <!-- SCRIPTS -->
+	<script type="text/javascript" src="/centros/static/js/popper.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/Chart.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/app.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/pie.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/jquery-3.3.1.min.js" ></script>
+	
+	<noscript>Su navegador no soporta Javascript o este lenguaje está desactivado</noscript>	
+</footer>
+
+<script type="text/javascript">
+
+function detalleCentro(codCentro){		
+		
+		document.formulario.codCentro.value = codCentro;
+		document.formulario.action="detalleCentro";
+		document.formulario.submit();
+	
+}
+
+function exportarListadoCentrosPdf(){		
+		
+		document.formularioCentrosPdf.action="exportarListadoCentrosPdf";
+		document.formularioCentrosPdf.submit();
+	
+	}
+		
+function exportarListadoCentrosExcel(){
+	
+	document.formularioCentrosExcel.action="exportarListadoCentrosExcel";
+	document.formularioCentrosExcel.submit();
+}
+
+function irBuscador(idComunidad){
+	document.formulario.idComunidad.value = idComunidad;
+	document.formulario.action="verBuscadorComunidad";
+	document.formulario.submit();
+}
+
+function irBuscadorProvincia(idComunidad, idProvincia){
+	document.formulario.idComunidad.value = idComunidad;
+	document.formulario.idProvincia.value = idProvincia;
+	document.formulario.action="verBuscadorProvincia";
+	document.formulario.submit();
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -54,7 +54,7 @@ class DetailsParser(BaseParser):
         try:
             services = []
             # First try to find the services section by looking for the header text
-            services_header = self.soup.find(text=lambda t: t and 'Servicios complementarios' in t)
+            services_header = self.soup.find(string=lambda t: t and 'Servicios complementarios' in t)
             if not services_header:
                 logger.debug("No services section found")
                 return []
@@ -90,7 +90,7 @@ class DetailsParser(BaseParser):
         try:
             studies = []
             # Look for the studies section by text content
-            studies_header = self.soup.find(text=lambda t: t and 'Enseñanzas impartidas' in t)
+            studies_header = self.soup.find(string=lambda t: t and 'Enseñanzas impartidas' in t)
             if not studies_header:
                 logger.debug("No studies section found")
                 return []

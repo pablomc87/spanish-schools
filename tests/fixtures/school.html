@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/bootstrap-datepicker.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/estilo.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/all.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/centros/static/css/font-awesome.min.css" media="all" />
+
+    <title>Centros</title>
+    
+    <!-- SCRIPTS -->
+	<script type="text/javascript" src="/centros/static/js/jquery-3.3.1.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap-datepicker.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/bootstrap-datepicker.es.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/general.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar" style="background-color: #669bbc;">
+    <div class="container">
+	    
+	    <div class="col-md-1">
+	    	<a class="navbar-brand" href="#">
+		        <img class="d-inline-block" height="60px" src="/centros/static/imagenes/escudo-mefp.gif"/>
+		    </a>
+	    </div>
+	    
+	    <div class="col-md-11">	   		
+	    	<p class="text-center text-light align-items-center h3">Buscador de Centros Docentes No Universitarios</p>
+	    </div>
+        
+    </div>
+</nav>
+	</header>
+
+
+	<main>
+		<div class="container" style="min-height: 90vh">
+
+<br>
+<br>
+<br>
+<br>
+
+<form name="formulario"  method="post">
+	<input type="hidden" name="codCentro"/>
+	
+</form>
+
+<div class="row">
+	<div class="col-md-11 text-right">			
+		<a href="/centros/inicio" style="text-decoration: none; cursor:pointer;"><i class="fas fa-arrow-circle-up"></i> &nbsp;Inicio</a>
+	</div>
+	 <div class="col-md-1 text-right" >			
+				<a href="#" style="text-decoration : none; cursor:pointer;" onclick="javascript:irListado();" ><i class="fas fa-arrow-circle-left"></i>&nbsp;Atrás</a>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item active">&nbsp;&nbsp;<em class="fas fa-tags"></em> Datos del centro seleccionado&nbsp;<span class="font-weight-bold text-uppercase"></span></li>		 
+		  </ol>
+		</nav>		
+	</div>
+</div>
+
+<div class="form-row">	
+	<div class="form-group col-md-10"></div>	
+	<p class="form-group col-md-12 text-right">
+		<a class="btn btn-outline-danger btn-sm" onclick="javascript:exportarDetalleCentroPdf(&quot;01000019&quot;);" data-toggle="tooltip" title="Exportar"><i class="fas fa-file-pdf" style="color:red"></i>&nbsp;&nbsp;Exportar PDF</a>
+<!-- 		<a href="javascript:exportarDetalleCentrosExcel();" class="btn btn-outline-success btn-sm" data-toggle="tooltip" title="Exportar"><i class="fas fa-file-excel" style="color:green"></i> &nbsp;&nbsp;Exportar excel</a> -->
+	
+	</p>
+</div>
+
+<div class="row">
+	<div class="panel panel-primary text-primary"><h4>&nbsp;&nbsp;<em class="fas fa-list"></em> Identificación</h4></div>
+</div>
+<div class="row">
+	<div class="col-md-6"><b>Código de centro:</b>&nbsp;&nbsp;<span>123456</span></div>
+	<div class="col-md-6"><b>Denominación específica:</b>&nbsp;&nbsp;<span>Test School</span></div>
+	<div class="col-md-6"><b>Teléfono:</b>&nbsp;&nbsp;<span>123456789</span></div>
+	<div class="col-md-6"><b>Fax:</b>&nbsp;&nbsp;<span>987654321</span></div>
+	<div class="col-md-6"><b>Correo electrónico:</b>&nbsp;&nbsp;<span>test.school@example.com</span></div>
+
+	<div class="col-md-6"><b>Página Web del centro:</b>&nbsp;&nbsp;<a href="http://www.example.com" target="_blank">www.example.com</a></div>	
+<!-- 	<div class="col-md-6"><b>Página Web del centro:</b>&nbsp;&nbsp;<span th:text="${centro.url}"></span></div>	 -->
+</div>
+
+
+<br>
+<div class="row">
+	<div class="panel panel-primary text-primary"><h4>&nbsp;&nbsp;<em class="fas fa-map-marker"></em> Ubicación </h4></div>
+</div>
+<div class="row">
+	<div class="col-md-6"><b>Autonomía:</b>&nbsp;&nbsp;<span>Test Autonomous Community</span></div>
+	<div class="col-md-6"><b>Provincia:</b>&nbsp;&nbsp;<span>Test Province</span></div>
+	<div class="col-md-6"><b>País:</b>&nbsp;&nbsp;<span>ESPAÑA</span></div>
+	<div class="col-md-6"><b>Comarca:</b>&nbsp;&nbsp;<span></span></div>
+	<div class="col-md-6"><b>Sub.Provincial / Isla:</b>&nbsp;&nbsp;<span></span></div>
+	<div class="col-md-6"><b>Municipio:</b>&nbsp;&nbsp;<span>Test City</span></div>
+	<div class="col-md-6"><b>Localidad:</b>&nbsp;&nbsp;<span>Test City</span></div>
+	<div class="col-md-6"><b>Domicilio:</b>&nbsp;&nbsp;<span>Test Street 123</span></div>
+	<div class="col-md-6"><b>Código postal:</b>&nbsp;&nbsp;<span>12345</span></div>	
+</div>
+<br>
+<div class="row">
+	<div class="panel panel-primary text-primary"><h4>&nbsp;&nbsp;<em class="fas fa-info-circle"></em> Tipificación </h4></div>
+</div>
+<div class="row">
+	<div class="col-md-6"><b>Naturaleza:</b>&nbsp;&nbsp;<span>Centro público</span></div>
+	<div class="col-md-6"><b>Concertado:</b>&nbsp;&nbsp;<span>No</span></div>
+	<div class="col-md-6"><b>Tipo de centro:</b>&nbsp;&nbsp;<span>Colegio Público</span></div>
+	<div class="col-md-6"><b>Denominación genérica:</b>&nbsp;&nbsp;<span>Colegio de Educación Infantil y Primaria</span></div>
+	
+</div>
+<br>
+<div class="row">
+	<div class="panel panel-primary text-primary"><h4>&nbsp;&nbsp;<em class="fas fa-database"></em> Enseñanzas impartidas </h4></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	
+		<table class="table table-hover table-sm">
+			<thead class="blue lighten-4">
+				<tr class="bg-light">
+					<th scope="col">Grado</th>
+					<th scope="col">Familia</th>
+  			        <th scope="col">Enseñanza</th>
+					<th scope="col">Modalidad</th>
+					
+			</thead>
+			<tbody>
+				<tr> 
+						<td>Primer Ciclo</td>
+						<td>Educación Infantil</td>
+						<td>Educación Infantil (Primer Ciclo)</td>
+						<td>Diurno</td>
+						
+						
+				</tr>
+				<tr> 
+						<td>Segundo Ciclo</td>
+						<td>Educación Infantil</td>
+						<td>Educación Infantil (Segundo Ciclo)</td>
+						<td>Diurno</td>
+						
+						
+				</tr>
+				<tr> 
+						<td>Primaria</td>
+						<td>Educación Primaria</td>
+						<td>Educación Primaria</td>
+						<td>Diurno</td>
+						
+						
+				</tr>				
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+
+
+<br>
+<div class="row">
+	<div class="panel panel-primary text-primary"><h4>&nbsp;&nbsp;<em class="fas fa-database"></em> Servicios complementarios </h4></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	
+		<table class="table table-hover table-sm">
+			<thead class="blue lighten-4">
+				<tr class="bg-light">
+					<th scope="col">Programas y Servicios</th>
+					
+			</thead>
+			<tbody>
+				<tr> 
+						<td>Comedor</td>
+						
+						
+				</tr>
+				<tr> 
+						<td>Transporte</td>
+						
+						
+				</tr>
+				<tr> 
+						<td>Biblioteca</td>
+						
+						
+				</tr>
+				<tr> 
+						<td>Gimnasio</td>
+						
+						
+				</tr>				
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+<br>
+
+
+
+</div>
+</main>
+
+<footer class="page-footer fixed-bottom">
+    <div class="footer-copyright text-center font-small">
+        <div class="pb-3" style="background-color: #357ba6; color: #FFF;">
+            <hr>
+            <a  href="mailto:registro.centros@educacion.gob.es" style="text-decoration : none; color: white;">Contacto</a> | Aviso legal | &copy Ministerio de Educaci&oacute;n, Formaci&oacute;n Profesional y Deportes - Gobierno de Espa&ntilde;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+    
+    <!-- SCRIPTS -->
+	<script type="text/javascript" src="/centros/static/js/popper.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/Chart.min.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/app.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/pie.js" ></script>
+	<script type="text/javascript" src="/centros/static/js/jquery-3.3.1.min.js" ></script>
+	
+	<noscript>Su navegador no soporta Javascript o este lenguaje está desactivado</noscript>	
+</footer>
+
+<script type="text/javascript">
+
+function exportarDetalleCentroPdf(centro){
+	document.formulario.codCentro.value = centro;
+	document.formulario.action="exportarDetalleCentroPdf";
+	document.formulario.submit();
+}
+
+function exportarDetalleCentrosExcel(){
+	
+	document.formulario.action="exportarListadoCentrosExcel";
+	document.formulario.submit();
+}
+
+function irListado(){
+	
+	document.formulario.action="buscarCentros";
+	document.formulario.submit();
+}
+
+</script>
+
+</body>
+</html>
+
+
