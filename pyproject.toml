@@ -1,0 +1,12 @@
+[tool.semantic_release]
+version_variable = [
+    "src/__init__.py:__version__"
+]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+build_command = "pip install build twine"
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs = true
+upload_to_pypi = false
+branch = "main" 
