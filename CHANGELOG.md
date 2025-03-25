@@ -2,6 +2,21 @@
 
 
 
+## v0.1.0 (2025-03-25)
+
+### Feature
+
+* feat: add linting and testing workflow with mypy support, and add tests (#1)
+
+* ci: add linting and testing workflow with mypy support, and add tests ([`26da9e2`](https://github.com/pablomc87/spanish-schools/commit/26da9e20fe7c638d782ccaad8e5203d61cd4fbe3))
+
+### Unknown
+
+* fix ([`4a3c95b`](https://github.com/pablomc87/spanish-schools/commit/4a3c95b6e101656c5c7b8cc4657e6d188d98b08b))
+
+* allowing releases to overwrite main ([`722452f`](https://github.com/pablomc87/spanish-schools/commit/722452f44e00f7ef5130709997b35c336125c2d7))
+
+
 ## v0.0.3 (2025-03-24)
 
 ### Fix
