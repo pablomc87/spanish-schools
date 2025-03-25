@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional, Union
@@ -55,8 +56,10 @@ class Config:
             default_payload=config_data["api"]["default_payload"],
         )
 
+        # Get database URL from environment variable or use default from config
+        db_url = os.getenv("DATABASE_URL", config_data["database"]["url"])
         self.database = DatabaseConfig(
-            url=config_data["database"]["url"],
+            url=db_url,
             echo=config_data["database"].get("echo", False),
         )
 

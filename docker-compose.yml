@@ -1,0 +1,8 @@
+services:
+  scraper:
+    build: .
+    volumes:
+      - ./schools.db:/app/schools.db
+    environment:
+      - DATABASE_URL=sqlite:///schools.db
+    command: python main.py --action scrape 
