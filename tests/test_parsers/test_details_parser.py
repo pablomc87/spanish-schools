@@ -1,11 +1,11 @@
-import pytest
 from src.parsers.details_parser import DetailsParser
+
 
 def test_parse_basic_info(sample_school_html):
     """Test parsing basic school information."""
     parser = DetailsParser(sample_school_html)
     info = parser.parse_basic_info()
-    
+
     assert info["id"] == "123456"
     assert info["name"] == "Test School"
     assert info["phone"] == "123456789"
@@ -13,11 +13,12 @@ def test_parse_basic_info(sample_school_html):
     assert info["email"] == "test.school@example.com"
     assert info["website"] == "www.example.com"
 
+
 def test_parse_location_info(sample_school_html):
     """Test parsing school location information."""
     parser = DetailsParser(sample_school_html)
     info = parser.parse_location_info()
-    
+
     assert info["autonomous_community"] == "Test Autonomous Community"
     assert info["province"] == "Test Province"
     assert info["country"] == "ESPAÑA"
@@ -28,31 +29,34 @@ def test_parse_location_info(sample_school_html):
     assert info["address"] == "Test Street 123"
     assert info["postal_code"] == "12345"
 
+
 def test_parse_classification_info(sample_school_html):
     """Test parsing school classification information."""
     parser = DetailsParser(sample_school_html)
     info = parser.parse_classification_info()
-    
+
     assert info["nature"] == "Centro público"
     assert info["is_concerted"] == "No"
     assert info["center_type"] == "Colegio Público"
     assert info["generic_name"] == "Colegio de Educación Infantil y Primaria"
 
+
 def test_parse_services(sample_school_html):
     """Test parsing school services."""
     parser = DetailsParser(sample_school_html)
     services = parser.parse_services()
-    
+
     assert "Comedor" in services
     assert "Transporte" in services
     assert "Biblioteca" in services
     assert "Gimnasio" in services
 
+
 def test_parse_imparted_studies(sample_school_html):
     """Test parsing imparted studies."""
     parser = DetailsParser(sample_school_html)
     studies = parser.parse_imparted_studies()
-    
+
     assert len(studies) == 3
     for study in studies:
         assert isinstance(study, dict)
@@ -62,11 +66,12 @@ def test_parse_imparted_studies(sample_school_html):
         assert "modality" in study
         assert all(isinstance(value, str) for value in study.values())
 
+
 def test_parse_all(sample_school_html):
     """Test parsing all school information."""
     parser = DetailsParser(sample_school_html)
     info = parser.parse_all()
-    
+
     # Check that all sections are present
     assert "id" in info
     assert "name" in info
@@ -90,13 +95,14 @@ def test_parse_all(sample_school_html):
     assert "services" in info
     assert "imparted_studies" in info
 
+
 def test_parse_with_invalid_html():
     """Test parsing with invalid HTML."""
     parser = DetailsParser("<invalid>html</invalid>")
-    
+
     # Should handle invalid HTML gracefully
     info = parser.parse_all()
     assert info["id"] is None
     assert info["name"] is None
     assert info["services"] == []
-    assert info["imparted_studies"] == [] 
+    assert info["imparted_studies"] == []
