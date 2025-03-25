@@ -2,6 +2,13 @@
 
 
 
+## v0.2.0 (2025-03-25)
+
+### Feature
+
+* feat(deployment): Created dockerfile for deployment anywhere ([`77a80f3`](https://github.com/pablomc87/spanish-schools/commit/77a80f3b2807a674cba54fed0806608e04ed3b39))
+
+
 ## v0.1.0 (2025-03-25)
 
 ### Feature
