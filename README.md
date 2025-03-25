@@ -1,6 +1,78 @@
-# Spanish Schools Scraper
+# Schools Scraper
 
-A Python-based scraper for collecting information about Spanish schools from the Ministry of Education's website.
+A Python-based scraper for educational institutions data.
+
+## Development Workflow
+
+### Branch Strategy
+- `main`: Production-ready code
+- `develop`: Integration branch for features
+- Feature branches: `feature/*`
+- Bug fix branches: `fix/*`
+- Release branches: `release/*`
+
+### Development Process
+1. Create a new branch from `develop`:
+   ```bash
+   git checkout develop
+   git pull
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make your changes and commit them:
+   ```bash
+   git add .
+   git commit -m "feat: your feature description"
+   ```
+
+3. Push your changes:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+4. Create a Pull Request to merge into `develop`
+
+### Pre-commit Hooks
+The repository uses pre-commit framework for Git hooks. The following hooks are configured:
+- `pytest`: Runs all tests before each commit
+- `black`: Formats Python code
+- `isort`: Sorts Python imports
+- `flake8`: Checks Python code style
+
+To set up pre-commit hooks:
+```bash
+# Install pre-commit
+pip install pre-commit
+
+# Install the git hooks
+pre-commit install
+```
+
+To run hooks manually:
+```bash
+pre-commit run --all-files
+```
+
+### Running Tests
+```bash
+pytest
+```
+
+### Code Style
+- Follow PEP 8 guidelines
+- Use type hints
+- Write docstrings for public functions and classes
+- Keep functions focused and small
+
+### Commit Messages
+Follow conventional commits format:
+- `feat:` for new features
+- `fix:` for bug fixes
+- `docs:` for documentation changes
+- `style:` for code style changes
+- `refactor:` for code refactoring
+- `test:` for adding or modifying tests
+- `chore:` for maintenance tasks
 
 ## Features
 

@@ -1,7 +1,8 @@
 import pytest
 from aioresponses import aioresponses
-from bs4 import BeautifulSoup
+
 from src.scrapers.list_scraper import ListScraper
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_success(sample_schools_html):
@@ -10,19 +11,20 @@ async def test_scrape_school_list_success(sample_schools_html):
         # Mock the response
         m.post(
             "https://www.educacion.gob.es/centros/buscarCentros",
-            body=sample_schools_html,  # Use body instead of payload to avoid encoding issues
-            headers={"Content-Type": "text/html; charset=utf-8"}
+            body=sample_schools_html,
+            headers={"Content-Type": "text/html; charset=utf-8"},
         )
-        
+
         scraper = ListScraper()
         result = await scraper.run()
-        
+
         # Verify the results match our anonymized data
         assert len(result) == 4
         assert result[0] == "00000001"
         assert result[1] == "00000002"
         assert result[2] == "00000003"
         assert result[3] == "00000004"
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_empty():
@@ -49,18 +51,19 @@ async def test_scrape_school_list_empty():
     </body>
     </html>
     """
-    
+
     with aioresponses() as m:
         # Mock empty response
         m.post(
             "https://www.educacion.gob.es/centros/buscarCentros",
             body=empty_html,
-            headers={"Content-Type": "text/html; charset=utf-8"}
+            headers={"Content-Type": "text/html; charset=utf-8"},
         )
-        
+
         scraper = ListScraper()
         result = await scraper.run()
         assert len(result) == 0
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_error():
@@ -71,12 +74,13 @@ async def test_scrape_school_list_error():
             "https://www.educacion.gob.es/centros/buscarCentros",
             status=500,
             body="Internal Server Error",
-            headers={"Content-Type": "text/plain"}
+            headers={"Content-Type": "text/plain"},
         )
-        
+
         scraper = ListScraper()
         with pytest.raises(Exception):
             await scraper.run()
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_retry(sample_schools_html):
@@ -87,23 +91,24 @@ async def test_scrape_school_list_retry(sample_schools_html):
             "https://www.educacion.gob.es/centros/buscarCentros",
             status=503,
             body="Service Unavailable",
-            headers={"Content-Type": "text/plain"}
+            headers={"Content-Type": "text/plain"},
         )
         m.post(
             "https://www.educacion.gob.es/centros/buscarCentros",
             body=sample_schools_html,
-            headers={"Content-Type": "text/html; charset=utf-8"}
+            headers={"Content-Type": "text/html; charset=utf-8"},
         )
-        
+
         scraper = ListScraper()
         result = await scraper.run()
-        
+
         # Verify the results match our anonymized data
         assert len(result) == 4
         assert result[0] == "00000001"
         assert result[1] == "00000002"
         assert result[2] == "00000003"
         assert result[3] == "00000004"
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_malformed():
@@ -127,18 +132,19 @@ async def test_scrape_school_list_malformed():
     </body>
     </html>
     """
-    
+
     with aioresponses() as m:
         # Mock malformed response
         m.post(
             "https://www.educacion.gob.es/centros/buscarCentros",
             body=malformed_html,
-            headers={"Content-Type": "text/html; charset=utf-8"}
+            headers={"Content-Type": "text/html; charset=utf-8"},
         )
-        
+
         scraper = ListScraper()
         result = await scraper.run()
         assert len(result) == 0  # Should handle malformed HTML gracefully
+
 
 @pytest.mark.asyncio
 async def test_scrape_school_list_no_tables():
@@ -151,15 +157,15 @@ async def test_scrape_school_list_no_tables():
     </body>
     </html>
     """
-    
+
     with aioresponses() as m:
         # Mock response with no tables
         m.post(
             "https://www.educacion.gob.es/centros/buscarCentros",
             body=no_tables_html,
-            headers={"Content-Type": "text/html; charset=utf-8"}
+            headers={"Content-Type": "text/html; charset=utf-8"},
         )
-        
+
         scraper = ListScraper()
         result = await scraper.run()
         assert len(result) == 0  # Should handle HTML with no tables gracefully
